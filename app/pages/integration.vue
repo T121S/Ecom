@@ -48,6 +48,7 @@ definePageMeta({
 })
 
 const { getMarketplaces, getConnections, connect, disconnect } = useIntegration()
+const toast = useToast()
 const marketplaces = ref<any[]>([])
 const connections = ref<any[]>([])
 const loading = ref(true)
@@ -64,10 +65,13 @@ function getConnection(marketplaceId: string) {
 
 function openConnectDialog(id: string, name: string) {
   if (!id) return
-  connectingId.value = id
-  connectingName.value = name
-  form.storeName = ''
-  showModal.value = true
+  toast.add({
+    title: 'Dalam Pengembangan',
+    description: `Fitur integrasi ${name} sedang dalam pengembangan dan belum tersedia.`,
+    color: 'warning',
+    icon: 'i-heroicons-information-circle',
+    timeout: 4000
+  })
 }
 
 async function handleConnect() {
