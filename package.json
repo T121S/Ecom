@@ -1,0 +1,27 @@
+{
+  "name": "project-ecom",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@iconify-json/heroicons": "^1.2.3",
+    "@iconify-json/logos": "^1.2.11",
+    "@iconify-json/lucide": "^1.2.115",
+    "@iconify-json/ri": "^1.2.10",
+    "@iconify-json/simple-icons": "^1.2.88",
+    "@nuxt/ui": "^4.9.0",
+    "@nuxtjs/supabase": "^2.0.9",
+    "@pinia/nuxt": "^0.11.3",
+    "@vueuse/core": "^14.3.0",
+    "nuxt": "^4.4.8",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.38",
+    "vue-router": "^5.1.0"
+  }
+}
