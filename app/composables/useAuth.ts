@@ -2,6 +2,7 @@ export const useAuth = () => {
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const router = useRouter()
+  const { public: { siteUrl } } = useRuntimeConfig()
 
   const login = async (email: string, password: string) => {
     const { error, data } = await supabase.auth.signInWithPassword({ email, password })
@@ -21,7 +22,7 @@ export const useAuth = () => {
       password,
       options: {
         data: { full_name: fullName },
-        emailRedirectTo: `${window.location.origin}/auth/callback`
+        emailRedirectTo: `${siteUrl || window.location.origin}/auth/callback`
       }
     })
     if (error) throw error

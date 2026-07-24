@@ -15,6 +15,11 @@ export default defineNuxtConfig({
     url: process.env.SUPABASE_URL || '',
     key: process.env.SUPABASE_ANON_KEY || ''
   },
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || ''
+    }
+  },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
