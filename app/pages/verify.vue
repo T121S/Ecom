@@ -3,14 +3,14 @@
     <div class="text-center mb-6">
       <h2 class="text-xl font-bold text-gray-900 dark:text-white">Verifikasi Email</h2>
       <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-        Masukkan 6 digit kode yang dikirim ke
+        Masukkan 8 digit kode yang dikirim ke
         <span class="font-semibold text-gray-700 dark:text-gray-300">{{ email || 'email Anda' }}</span>
       </p>
     </div>
     <form @submit.prevent="handleVerify" class="space-y-4" novalidate>
       <div class="flex justify-center gap-2">
         <input
-          v-for="(_, i) in 6"
+          v-for="(_, i) in 8"
           :key="i"
           :ref="(el) => { if (el) inputs[i] = el as HTMLInputElement }"
           v-model="digits[i]"
@@ -58,7 +58,7 @@ const router = useRouter()
 const { verifyOtp, resendOtp } = useAuth()
 
 const email = computed(() => (route.query.email as string) || '')
-const digits = ref(['', '', '', '', '', ''])
+const digits = ref(['', '', '', '', '', '', '', ''])
 const inputs = ref<HTMLInputElement[]>([])
 const loading = ref(false)
 const resending = ref(false)
@@ -91,7 +91,7 @@ function startCooldown() {
 function onInput(i: number, e: Event) {
   const val = (e.target as HTMLInputElement).value.replace(/\D/g, '')
   digits.value[i] = val.slice(-1)
-  if (val && i < 5) inputs.value[i + 1]?.focus()
+  if (val && i < 7) inputs.value[i + 1]?.focus()
 }
 
 function onKeydown(i: number, e: KeyboardEvent) {
@@ -102,9 +102,9 @@ function onKeydown(i: number, e: KeyboardEvent) {
 
 function onPaste(e: ClipboardEvent) {
   e.preventDefault()
-  const data = (e.clipboardData?.getData('text') || '').replace(/\D/g, '').slice(0, 6)
-  for (let i = 0; i < 6; i++) digits.value[i] = data[i] || ''
-  const lastFilled = Math.min(data.length, 5)
+  const data = (e.clipboardData?.getData('text') || '').replace(/\D/g, '').slice(0, 8)
+  for (let i = 0; i < 8; i++) digits.value[i] = data[i] || ''
+  const lastFilled = Math.min(data.length, 7)
   inputs.value[lastFilled]?.focus()
 }
 
@@ -112,8 +112,8 @@ async function handleVerify() {
   error.value = ''
   success.value = ''
   const token = digits.value.join('')
-  if (token.length !== 6) {
-    error.value = 'Masukkan 6 digit kode.'
+  if (token.length !== 8) {
+    error.value = 'Masukkan 8 digit kode.'
     return
   }
   if (!email.value) {

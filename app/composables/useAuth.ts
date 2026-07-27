@@ -26,7 +26,6 @@ export const useAuth = () => {
       }
     })
     if (error) throw error
-    await sendOtp(email)
   }
 
   const sendOtp = async (email: string) => {
