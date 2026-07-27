@@ -25,6 +25,9 @@
         />
         <p v-if="errors.password" class="mt-1 text-red-500 text-xs">{{ errors.password }}</p>
       </div>
+      <div class="flex justify-end">
+        <NuxtLink to="/forgot-password" class="text-sm text-blue-600 font-medium hover:underline">Lupa Password?</NuxtLink>
+      </div>
       <button
         type="submit"
         :disabled="loading"

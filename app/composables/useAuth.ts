@@ -46,6 +46,25 @@ export const useAuth = () => {
     await sendOtp(email)
   }
 
+  const requestPasswordReset = async (email: string) => {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${siteUrl || window.location.origin}/reset-password`
+    })
+    if (error) throw error
+  }
+
+  const verifyRecoveryOtp = async (email: string, token: string) => {
+    const { error } = await supabase.auth.verifyOtp({ email, token, type: 'recovery' })
+    if (error) throw error
+  }
+
+  const updatePassword = async (newPassword: string) => {
+    const { error } = await supabase.auth.updateUser({ password: newPassword })
+    if (error) throw error
+    await supabase.auth.signOut()
+    router.push('/login')
+  }
+
   const logout = async () => {
     const { error } = await supabase.auth.signOut()
     if (error) throw error
@@ -59,6 +78,9 @@ export const useAuth = () => {
     logout,
     sendOtp,
     verifyOtp,
-    resendOtp
+    resendOtp,
+    requestPasswordReset,
+    verifyRecoveryOtp,
+    updatePassword
   }
 }
