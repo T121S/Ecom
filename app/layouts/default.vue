@@ -1,9 +1,37 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-950 flex">
-    <aside class="hidden lg:flex lg:flex-col w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 shadow-sm">
+    <!-- Mobile backdrop -->
+    <div
+      v-if="mobileOpen"
+      class="lg:hidden fixed inset-0 bg-black/50 z-30"
+      @click="mobileOpen = false"
+    />
+
+    <!-- Floating hamburger (mobile, sidebar closed) -->
+    <button
+      v-if="!mobileOpen"
+      class="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors"
+      aria-label="Buka menu"
+      @click="mobileOpen = true"
+    >
+      <UIcon name="i-heroicons-bars-3" class="w-5 h-5" />
+    </button>
+
+    <!-- Sidebar -->
+    <aside
+      class="fixed lg:static inset-y-0 left-0 z-40 flex flex-col w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 shadow-sm transform transition-transform duration-200 lg:translate-x-0"
+      :class="mobileOpen ? 'translate-x-0' : '-translate-x-full'"
+    >
       <div class="flex items-center gap-3 px-5 h-16 border-b border-gray-100 dark:border-gray-800">
         <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-[10px] shadow">JADEE</div>
         <span class="text-lg font-bold text-gray-900 dark:text-white">Jadee</span>
+        <button
+          class="lg:hidden ml-auto p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"
+          aria-label="Tutup menu"
+          @click="mobileOpen = false"
+        >
+          <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
+        </button>
       </div>
 
       <nav class="flex-1 p-3 space-y-0.5">
@@ -15,6 +43,7 @@
           :class="isActive(item.to)
             ? 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300'
             : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'"
+          @click="mobileOpen = false"
         >
           <UIcon :name="item.icon" class="w-5 h-5 shrink-0" />
           <span>{{ item.label }}</span>
@@ -37,48 +66,6 @@
     </aside>
 
     <div class="flex-1 flex flex-col min-h-screen">
-      <header class="lg:hidden flex items-center justify-between h-16 px-4 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-        <div class="flex items-center gap-3">
-          <button class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800" @click="mobileOpen = true">
-            <UIcon name="i-heroicons-bars-3" class="w-5 h-5" />
-          </button>
-          <span class="font-bold text-gray-900 dark:text-white">Jadee</span>
-        </div>
-        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-sm font-medium text-blue-700">
-          {{ user?.email?.charAt(0).toUpperCase() || 'U' }}
-        </div>
-      </header>
-
-      <USlideover v-model="mobileOpen">
-        <div class="p-4">
-          <div class="flex items-center justify-between mb-6">
-            <span class="font-bold text-lg text-gray-900 dark:text-white">Jadee</span>
-            <button class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800" @click="mobileOpen = false">
-              <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
-            </button>
-          </div>
-          <nav class="space-y-0.5">
-            <NuxtLink
-              v-for="item in navItems"
-              :key="item.to"
-              :to="item.to"
-              class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
-              :class="isActive(item.to)
-                ? 'bg-blue-50 text-blue-700'
-                : 'text-gray-600 hover:bg-gray-100'"
-              @click="mobileOpen = false"
-            >
-              <UIcon :name="item.icon" class="w-5 h-5" />
-              {{ item.label }}
-            </NuxtLink>
-            <button class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 w-full mt-4" @click="logout">
-              <UIcon name="i-heroicons-arrow-left-on-rectangle" class="w-5 h-5" />
-              Logout
-            </button>
-          </nav>
-        </div>
-      </USlideover>
-
       <main class="flex-1 p-6 lg:p-8 overflow-auto">
         <slot />
       </main>
