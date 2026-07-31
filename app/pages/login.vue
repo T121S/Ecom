@@ -45,6 +45,7 @@
     <div v-if="needVerify" class="mt-4 bg-amber-50 text-amber-700 text-sm px-4 py-3 rounded-xl space-y-1">
       <p class="font-semibold">Email belum terverifikasi</p>
       <p>Buka email Anda dan klik link verifikasi yang kami kirim untuk mengaktifkan akun.</p>
+      <p class="pt-1 text-amber-700/80">Tidak menemukan email? Cek folder Spam/Junk Anda.</p>
       <button
         type="button"
         :disabled="resending"

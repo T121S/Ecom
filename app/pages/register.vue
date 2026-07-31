@@ -38,9 +38,27 @@
     <div v-if="registered" class="mt-4 bg-green-50 text-green-700 text-sm px-4 py-3 rounded-xl space-y-1">
       <p class="font-semibold">Pendaftaran berhasil!</p>
       <p>Kami telah mengirim link verifikasi ke <span class="font-semibold">{{ state.email }}</span>. Buka email Anda dan klik link tersebut untuk mengaktifkan akun.</p>
+      <p class="pt-2 text-amber-700">Tidak menemukan email? Cek folder Spam/Junk Anda.</p>
       <p class="pt-2">
         Sudah verifikasi?
         <NuxtLink to="/login" class="font-semibold underline">Masuk di sini</NuxtLink>
+      </p>
+    </div>
+    <div v-if="alreadyRegistered" class="mt-4 bg-amber-50 text-amber-700 text-sm px-4 py-3 rounded-xl space-y-3">
+      <p class="font-semibold">Email sudah terdaftar</p>
+      <p>Alamat email ini sudah dipakai akun lain. Masuk dengan email ini, atau gunakan email lain jika belum punya akun.</p>
+      <div class="flex flex-col sm:flex-row gap-2 pt-1">
+        <NuxtLink to="/login" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-xl transition shadow shadow-blue-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><path d="m10 17 5-5-5-5" /><path d="M15 12H3" /></svg>
+          Masuk
+        </NuxtLink>
+        <NuxtLink to="/forgot-password" class="inline-flex items-center justify-center gap-2 bg-white text-gray-900 dark:bg-gray-900 dark:text-white border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 font-semibold px-5 py-2.5 rounded-xl transition">
+          Lupa Password?
+        </NuxtLink>
+      </div>
+      <p class="pt-1">
+        Belum punya akun?
+        <button type="button" @click="resetAlreadyRegistered" class="font-semibold underline">Coba email lain</button>
       </p>
     </div>
   </div>
@@ -53,6 +71,7 @@ const state = reactive({ fullName: '', email: '', password: '', confirmPassword:
 const loading = ref(false)
 const error = ref('')
 const registered = ref(false)
+const alreadyRegistered = ref(false)
 const errors = reactive({ fullName: '', email: '', password: '', confirmPassword: '' })
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -88,15 +107,28 @@ function validate() {
 async function handleRegister() {
   error.value = ''
   registered.value = false
+  alreadyRegistered.value = false
   if (!validate()) return
   loading.value = true
   try {
     await register(state.fullName.trim(), state.email.trim(), state.password)
     registered.value = true
   } catch (e: any) {
-    error.value = e.message || 'Gagal mendaftar'
+    if (e.name === 'EmailAlreadyRegistered') {
+      alreadyRegistered.value = true
+    } else {
+      error.value = e.message || 'Gagal mendaftar'
+    }
   } finally {
     loading.value = false
   }
+}
+
+function resetAlreadyRegistered() {
+  alreadyRegistered.value = false
+  error.value = ''
+  state.email = ''
+  state.password = ''
+  state.confirmPassword = ''
 }
 </script>

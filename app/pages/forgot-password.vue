@@ -32,6 +32,7 @@
     <div v-if="success" class="mt-4 bg-amber-50 text-amber-700 text-sm px-4 py-3 rounded-xl">
       <p class="font-semibold mb-1">Link reset telah dikirim</p>
       <p>{{ success }}</p>
+      <p class="pt-1 text-amber-700/80">Tidak menemukan email? Cek folder Spam/Junk Anda.</p>
     </div>
   </div>
 </template>
