@@ -2,8 +2,8 @@
   <div class="min-h-screen bg-gray-50 dark:bg-gray-950 flex">
     <aside class="hidden lg:flex lg:flex-col w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 shadow-sm">
       <div class="flex items-center gap-3 px-5 h-16 border-b border-gray-100 dark:border-gray-800">
-        <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm shadow">O</div>
-        <span class="text-lg font-bold text-gray-900 dark:text-white">OmniStock</span>
+        <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-[10px] shadow">JADEE</div>
+        <span class="text-lg font-bold text-gray-900 dark:text-white">Jadee</span>
       </div>
 
       <nav class="flex-1 p-3 space-y-0.5">
@@ -42,7 +42,7 @@
           <button class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800" @click="mobileOpen = true">
             <UIcon name="i-heroicons-bars-3" class="w-5 h-5" />
           </button>
-          <span class="font-bold text-gray-900 dark:text-white">OmniStock</span>
+          <span class="font-bold text-gray-900 dark:text-white">Jadee</span>
         </div>
         <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-sm font-medium text-blue-700">
           {{ user?.email?.charAt(0).toUpperCase() || 'U' }}
@@ -52,7 +52,7 @@
       <USlideover v-model="mobileOpen">
         <div class="p-4">
           <div class="flex items-center justify-between mb-6">
-            <span class="font-bold text-lg text-gray-900 dark:text-white">OmniStock</span>
+            <span class="font-bold text-lg text-gray-900 dark:text-white">Jadee</span>
             <button class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800" @click="mobileOpen = false">
               <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
             </button>

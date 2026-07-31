@@ -40,7 +40,7 @@
 
           <a
             v-if="plan.name === 'Business'"
-            href="mailto:sales@omnistock.id"
+            href="mailto:sales@jadee.app"
             :class="plan.highlighted ? 'btn-primary w-full' : 'btn-secondary w-full'"
           >
             {{ plan.cta }}
@@ -56,7 +56,7 @@
       </div>
 
       <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">
-        Butuh paket custom atau lebih dari 10 toko? <a href="mailto:sales@omnistock.id" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Hubungi sales kami</a>.
+        Butuh paket custom atau lebih dari 10 toko? <a href="mailto:sales@jadee.app" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Hubungi sales kami</a>.
       </p>
     </div>
   </section>
@@ -66,7 +66,7 @@
 const plans = [
   {
     name: 'Free',
-    desc: 'Untuk mulai mengenal OmniStock',
+    desc: 'Untuk mulai mengenal Jadee',
     price: 'Rp0',
     period: '/bulan',
     cta: 'Mulai Gratis',

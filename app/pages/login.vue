@@ -2,7 +2,7 @@
   <div>
     <div class="text-center mb-6">
       <h2 class="text-xl font-bold text-gray-900 dark:text-white">Selamat Datang Kembali</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Masuk ke akun OmniStock Anda</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Masuk ke akun Jadee Anda</p>
     </div>
     <form @submit.prevent="handleLogin" class="space-y-4" novalidate>
       <div>

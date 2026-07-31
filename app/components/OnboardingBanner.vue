@@ -6,7 +6,7 @@
     </div>
     <div class="relative flex flex-col md:flex-row items-center gap-6 p-6">
       <div class="flex-1 text-white">
-        <h2 class="text-xl font-bold mb-2">Selamat Datang di OmniStock!</h2>
+        <h2 class="text-xl font-bold mb-2">Selamat Datang di Jadee!</h2>
         <p class="text-sm text-blue-100 mb-4 leading-relaxed">Hubungkan toko marketplace Anda untuk mulai mengelola stok secara terpusat. Kami mendukung:</p>
         <div class="flex items-center gap-6 mb-5">
           <div v-for="mp in marketplaces" :key="mp.slug" class="flex flex-col items-center gap-1.5">

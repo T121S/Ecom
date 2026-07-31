@@ -7,8 +7,8 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" />
   <rect x="80" y="80" width="64" height="64" rx="14" fill="#2563eb" />
-  <text x="112" y="124" font-family="Inter, sans-serif" font-size="40" font-weight="700" fill="white" text-anchor="middle">O</text>
-  <text x="160" y="125" font-family="Inter, sans-serif" font-size="32" font-weight="700" fill="#0f172a">OmniStock</text>
+  <text x="112" y="126" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">JADEE</text>
+  <text x="160" y="125" font-family="Inter, sans-serif" font-size="32" font-weight="700" fill="#0f172a">Jadee</text>
   <text x="80" y="290" font-family="Inter, sans-serif" font-size="56" font-weight="700" fill="#0f172a">Kelola Stok Lintas</text>
   <text x="80" y="370" font-family="Inter, sans-serif" font-size="56" font-weight="700" fill="#2563eb">Marketplace Tanpa Ribet</text>
   <text x="80" y="450" font-family="Inter, sans-serif" font-size="28" font-weight="400" fill="#475569">Shopee, Tokopedia, dan Lazada dalam satu dasbor. Stok tersinkronisasi otomatis.</text>

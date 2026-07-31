@@ -8,7 +8,7 @@
           <span class="text-blue-600 dark:text-blue-400">kelola stok multi-platform</span>
         </h2>
         <p class="mt-4 text-gray-600 dark:text-gray-400">
-          Bits tanpa setup rumit. Hubungkan toko Anda sekali, biarkan OmniStock bekerja otomatis.
+          Bits tanpa setup rumit. Hubungkan toko Anda sekali, biarkan Jadee bekerja otomatis.
         </p>
       </div>
 

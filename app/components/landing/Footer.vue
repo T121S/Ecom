@@ -4,10 +4,10 @@
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
         <div class="col-span-2">
           <NuxtLink to="/" class="flex items-center gap-2.5 mb-4">
-            <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-base">
-              O
-            </div>
-            <span class="text-lg font-bold">OmniStock</span>
+<div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-[10px]">
+            JADEE
+          </div>
+          <span class="text-lg font-bold">Jadee</span>
           </NuxtLink>
           <p class="text-sm text-gray-500 dark:text-gray-400 max-w-xs leading-relaxed">
             Pusat kendali operasional untuk merchant e-commerce multi-platform. Sinkronisasi stok otomatis, anti overselling.
@@ -33,9 +33,9 @@
       </div>
 
       <div class="mt-12 pt-6 border-t border-gray-100 dark:border-gray-900 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-xs text-gray-400 dark:text-gray-500">© {{ year }} OmniStock. All rights reserved.</p>
+        <p class="text-xs text-gray-400 dark:text-gray-500">© {{ year }} Jadee. All rights reserved.</p>
         <div class="flex items-center gap-3 text-gray-400">
-          <a href="mailto:hello@omnistock.id" aria-label="Email" class="hover:text-blue-600 transition-colors">
+          <a href="mailto:hello@jadee.app" aria-label="Email" class="hover:text-blue-600 transition-colors">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 5L2 7" /></svg>
           </a>
           <a href="https://github.com/T121S/Ecom" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-blue-600 transition-colors">

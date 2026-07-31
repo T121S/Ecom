@@ -2,10 +2,10 @@
   <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-slate-950/80 border-b border-gray-100 dark:border-gray-900">
     <nav class="container-page flex items-center justify-between h-16">
       <NuxtLink to="/" class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-base shadow-lg shadow-blue-600/30">
-          O
+        <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-[10px] shadow-lg shadow-blue-600/30">
+          JADEE
         </div>
-        <span class="text-lg font-bold tracking-tight">OmniStock</span>
+        <span class="text-lg font-bold tracking-tight">Jadee</span>
       </NuxtLink>
 
       <div class="hidden md:flex items-center gap-1">

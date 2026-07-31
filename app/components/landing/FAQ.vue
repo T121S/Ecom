@@ -7,7 +7,7 @@
           Pertanyaan yang sering diajukan
         </h2>
         <p class="mt-4 text-gray-600 dark:text-gray-400">
-          Tidak menemukan jawaban? <a href="mailto:hello@omnistock.id" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Email kami</a>.
+          Tidak menemukan jawaban? <a href="mailto:hello@jadee.app" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Email kami</a>.
         </p>
       </div>
 
@@ -34,7 +34,7 @@
 <script setup lang="ts">
 const faqs = [
   {
-    q: 'Apakah OmniStock butuh kartu kredit untuk mulai?',
+    q: 'Apakah Jadee butuh kartu kredit untuk mulai?',
     a: 'Tidak. Anda bisa daftar gratis dan trial 14 hari tanpa perlu input kartu kredit. Upgrade ke paket berbayar hanya saat Anda merasa cocok.'
   },
   {
@@ -62,7 +62,7 @@ const faqs = [
     a: 'Setiap sinkronisasi gagal akan otomatis dicoba ulang dengan backoff eksponensial. Anda juga mendapat notifikasi di dashboard jika ada sinkronisasi yang gagal lebih dari 1 menit, lengkap dengan log error untuk transparency.'
   },
   {
-    q: 'Apakah OmniStock mengambil fee per transaksi?',
+    q: 'Apakah Jadee mengambil fee per transaksi?',
     a: 'Tidak. Kami tidak mengambil potongan dari penjualan Anda. Model bisnis kami murni langganan SaaS — Anda bayar biaya tetap per bulan sesuai paket, selesai.'
   }
 ]

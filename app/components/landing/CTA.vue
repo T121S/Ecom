@@ -12,7 +12,7 @@
             Mulai Kelola Stok Lebih Pintar Hari Ini
           </h2>
           <p class="mt-4 text-blue-100 text-lg leading-relaxed">
-            Gabung bersama merchant yang sudah menyatukan operasional multi-platform mereka dengan OmniStock. Tanpa kartu kredit, tanpa risiko.
+            Gabung bersama merchant yang sudah menyatukan operasional multi-platform mereka dengan Jadee. Tanpa kartu kredit, tanpa risiko.
           </p>
 
           <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">

@@ -5,11 +5,11 @@
 </template>
 
 <script setup lang="ts">
-const title = 'OmniStock — Kelola Stok Lintas Marketplace Tanpa Ribet'
-const description = 'OmniStock menyatukan Shopee, Tokopedia, dan Lazada dalam satu dasbor. Stok tersinkronisasi otomatis di seluruh platform — kurangi overselling, hemat waktu.'
-const keywords = 'omnistock, sinkronisasi stok, shopee, tokopedia, lazada, omnichannel, inventory management, saas, e-commerce indonesia'
+const title = 'Jadee — Kelola Stok Lintas Marketplace Tanpa Ribet'
+const description = 'Jadee menyatukan Shopee, Tokopedia, dan Lazada dalam satu dasbor. Stok tersinkronisasi otomatis di seluruh platform — kurangi overselling, hemat waktu.'
+const keywords = 'jadee, sinkronisasi stok, shopee, tokopedia, lazada, omnichannel, inventory management, saas, e-commerce indonesia'
 
-const siteUrl = useRuntimeConfig().public.siteUrl || 'https://omnistock.app'
+const siteUrl = useRuntimeConfig().public.siteUrl || 'https://jadee.app'
 const route = useRoute()
 const canonicalURL = computed(() => new URL(route.path, siteUrl).toString())
 const ogImage = computed(() => new URL('/og-image.svg', siteUrl).toString())
@@ -32,12 +32,12 @@ useSeoMeta({
   ogDescription: description,
   ogImage,
   ogLocale: 'id_ID',
-  ogSiteName: 'OmniStock',
+  ogSiteName: 'Jadee',
   twitterCard: 'summary_large_image',
   twitterTitle: title,
   twitterDescription: description,
   twitterImage: ogImage,
   robots: 'index, follow',
-  author: 'OmniStock'
+  author: 'Jadee'
 })
 </script>

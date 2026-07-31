@@ -16,5 +16,5 @@
 
 <script setup lang="ts">
 definePageMeta({ layout: false })
-useHead({ title: 'OmniStock — Kelola Stok Lintas Marketplace Tanpa Ribet' })
+useHead({ title: 'Jadee — Kelola Stok Lintas Marketplace Tanpa Ribet' })
 </script>

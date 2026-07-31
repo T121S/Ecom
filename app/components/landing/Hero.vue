@@ -20,7 +20,7 @@
             </span>
           </h1>
           <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
-            OmniStock menyatukan Shopee, Tokopedia, dan Lazada dalam satu dasbor. Stok tersinkronisasi otomatis di seluruh platform — kurangi overselling, hemat waktu.
+            Jadee menyatukan Shopee, Tokopedia, dan Lazada dalam satu dasbor. Stok tersinkronisasi otomatis di seluruh platform — kurangi overselling, hemat waktu.
           </p>
 
           <div class="mt-8 flex flex-col sm:flex-row gap-3">
@@ -47,7 +47,7 @@
               <div class="w-3 h-3 rounded-full bg-red-400"></div>
               <div class="w-3 h-3 rounded-full bg-amber-400"></div>
               <div class="w-3 h-3 rounded-full bg-green-400"></div>
-              <div class="ml-3 text-xs text-gray-400 dark:text-gray-500 font-medium">omnistock.app/dashboard</div>
+              <div class="ml-3 text-xs text-gray-400 dark:text-gray-500 font-medium">jadee.app/dashboard</div>
             </div>
 
             <div class="p-5 space-y-4">
