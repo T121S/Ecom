@@ -9,7 +9,7 @@ export const useAuth = () => {
     if (error) throw error
     if (data.user && !data.user.email_confirmed_at) {
       await supabase.auth.signOut()
-      const err = new Error('Email belum terverifikasi. Masukkan kode OTP yang dikirim ke email Anda.')
+      const err = new Error('Email belum terverifikasi. Buka link verifikasi di email Anda untuk mengaktifkan akun.')
       err.name = 'EmailNotConfirmed'
       throw err
     }
@@ -28,32 +28,21 @@ export const useAuth = () => {
     if (error) throw error
   }
 
-  const sendOtp = async (email: string) => {
-    const { error } = await supabase.auth.signInWithOtp({
+  const resendConfirmation = async (email: string) => {
+    const { error } = await supabase.auth.resend({
+      type: 'signup',
       email,
-      options: { shouldCreateUser: false }
+      options: {
+        emailRedirectTo: `${siteUrl || window.location.origin}/auth/callback`
+      }
     })
     if (error) throw error
-  }
-
-  const verifyOtp = async (email: string, token: string) => {
-    const { error } = await supabase.auth.verifyOtp({ email, token, type: 'signup' })
-    if (error) throw error
-  }
-
-  const resendOtp = async (email: string) => {
-    await sendOtp(email)
   }
 
   const requestPasswordReset = async (email: string) => {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${siteUrl || window.location.origin}/reset-password`
     })
-    if (error) throw error
-  }
-
-  const verifyRecoveryOtp = async (email: string, token: string) => {
-    const { error } = await supabase.auth.verifyOtp({ email, token, type: 'recovery' })
     if (error) throw error
   }
 
@@ -75,11 +64,8 @@ export const useAuth = () => {
     login,
     register,
     logout,
-    sendOtp,
-    verifyOtp,
-    resendOtp,
+    resendConfirmation,
     requestPasswordReset,
-    verifyRecoveryOtp,
     updatePassword
   }
 }

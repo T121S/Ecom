@@ -42,25 +42,30 @@
       <NuxtLink to="/register" class="text-blue-600 font-semibold hover:underline">Daftar</NuxtLink>
     </p>
     <div v-if="error" class="mt-4 bg-red-50 text-red-700 text-sm px-4 py-2.5 rounded-xl">{{ error }}</div>
-    <div v-if="resendAvailable" class="mt-4 bg-amber-50 text-amber-700 text-sm px-4 py-2.5 rounded-xl flex items-center justify-between gap-2">
-      <span>Email belum diverifikasi.</span>
-      <button type="button" :disabled="resending" @click="handleResend" class="font-semibold underline disabled:opacity-50">
-        Kirim kode OTP<span v-if="resending">...</span>
+    <div v-if="needVerify" class="mt-4 bg-amber-50 text-amber-700 text-sm px-4 py-3 rounded-xl space-y-1">
+      <p class="font-semibold">Email belum terverifikasi</p>
+      <p>Buka email Anda dan klik link verifikasi yang kami kirim untuk mengaktifkan akun.</p>
+      <button
+        type="button"
+        :disabled="resending"
+        @click="handleResend"
+        class="font-semibold underline disabled:opacity-50 mt-1"
+      >
+        Kirim ulang link verifikasi<span v-if="resending">...</span>
       </button>
+      <p v-if="resendSuccess" class="text-green-700 mt-1">{{ resendSuccess }}</p>
     </div>
-    <div v-if="resendSuccess" class="mt-4 bg-green-50 text-green-700 text-sm px-4 py-2.5 rounded-xl">{{ resendSuccess }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
 definePageMeta({ layout: 'auth', middleware: ['auth'] })
-const { login, sendOtp } = useAuth()
-const router = useRouter()
+const { login, resendConfirmation } = useAuth()
 const state = reactive({ email: '', password: '' })
 const loading = ref(false)
 const error = ref('')
 const errors = reactive({ email: '', password: '' })
-const resendAvailable = ref(false)
+const needVerify = ref(false)
 const resending = ref(false)
 const resendSuccess = ref('')
 
@@ -83,7 +88,7 @@ function validate() {
 
 async function handleLogin() {
   error.value = ''
-  resendAvailable.value = false
+  needVerify.value = false
   resendSuccess.value = ''
   if (!validate()) return
   loading.value = true
@@ -92,7 +97,7 @@ async function handleLogin() {
   } catch (e: any) {
     const msg = e.message || 'Gagal masuk'
     if (e.name === 'EmailNotConfirmed' || /not confirmed|belum terverifikasi/i.test(msg)) {
-      resendAvailable.value = true
+      needVerify.value = true
     }
     error.value = msg
   } finally {
@@ -103,12 +108,12 @@ async function handleLogin() {
 async function handleResend() {
   resending.value = true
   error.value = ''
+  resendSuccess.value = ''
   try {
-    await sendOtp(state.email.trim())
-    resendSuccess.value = 'Kode OTP telah dikirim ke email Anda.'
-    router.push({ path: '/verify', query: { email: state.email.trim() } })
+    await resendConfirmation(state.email.trim())
+    resendSuccess.value = 'Link verifikasi telah dikirim ke email Anda.'
   } catch (e: any) {
-    error.value = e.message || 'Gagal mengirim kode.'
+    error.value = e.message || 'Gagal mengirim ulang link.'
   } finally {
     resending.value = false
   }

@@ -35,16 +35,24 @@
       <NuxtLink to="/login" class="text-blue-600 font-semibold hover:underline">Masuk</NuxtLink>
     </p>
     <div v-if="error" class="mt-4 bg-red-50 text-red-700 text-sm px-4 py-2.5 rounded-xl">{{ error }}</div>
+    <div v-if="registered" class="mt-4 bg-green-50 text-green-700 text-sm px-4 py-3 rounded-xl space-y-1">
+      <p class="font-semibold">Pendaftaran berhasil!</p>
+      <p>Kami telah mengirim link verifikasi ke <span class="font-semibold">{{ state.email }}</span>. Buka email Anda dan klik link tersebut untuk mengaktifkan akun.</p>
+      <p class="pt-2">
+        Sudah verifikasi?
+        <NuxtLink to="/login" class="font-semibold underline">Masuk di sini</NuxtLink>
+      </p>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 definePageMeta({ layout: 'auth', middleware: ['auth'] })
 const { register } = useAuth()
-const router = useRouter()
 const state = reactive({ fullName: '', email: '', password: '', confirmPassword: '' })
 const loading = ref(false)
 const error = ref('')
+const registered = ref(false)
 const errors = reactive({ fullName: '', email: '', password: '', confirmPassword: '' })
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -79,11 +87,12 @@ function validate() {
 
 async function handleRegister() {
   error.value = ''
+  registered.value = false
   if (!validate()) return
   loading.value = true
   try {
     await register(state.fullName.trim(), state.email.trim(), state.password)
-    router.push({ path: '/verify', query: { email: state.email.trim() } })
+    registered.value = true
   } catch (e: any) {
     error.value = e.message || 'Gagal mendaftar'
   } finally {
